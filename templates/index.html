@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Bot Logs and Commander</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="header">
+        <h1>Telegram Bot Logs and Commander</h1>
+        <nav>
+            <a href="/">Home</a> | 
+            <a href="/images">Images Manager</a>
+        </nav>
+    </div>
+    <div class="container" id="log-container">
+        <!-- Display initial logs -->
+        {% for log in logs %}
+            <div class="log {{ 'command' if log[1] else 'response' }}">{{ log[0] | safe }}</div>
+        {% endfor %}
+    </div>
+    <div class="command-form-container">
+        <div class="command-form">
+            <form method="POST" action="/execute_command" style="display: flex; width: 100%; max-width: 800px;">
+                <input type="text" name="command" class="command-input" placeholder="Type /help">
+                <button type="submit" class="command-button">Execute</button>
+            </form>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/socket.io.js') }}"></script>
+    <script>
+        var socket = io();
+
+        socket.on('new_log', function(data) {
+            const logContainer = document.getElementById('log-container');
+            const logDiv = document.createElement('div');
+            logDiv.className = 'log ' + (data.is_command ? 'command' : 'response');
+            logDiv.innerHTML = data.message;
+            logContainer.appendChild(logDiv);
+
+            // Scroll to the bottom of the log container
+            logContainer.scrollTop = logContainer.scrollHeight;
+        });
+        window.onload = function() {
+            const logContainer = document.getElementById('log-container');
+            logContainer.scrollTop = logContainer.scrollHeight;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    background: #4CAF50;
+    padding: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.header nav {
+    display: flex;
+    gap: 10px;
+}
+
+.header nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.header nav a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    width: 800px;
+    margin: auto;
+    padding: 20px;
+    background: #fff;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.log {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 8px;
+    max-width: 70%;
+    word-wrap: break-word;
+}
+
+.log.command {
+    background-color: #e0f7fa;
+    border-left: 5px solid #00838f;
+    align-self: flex-end;
+    text-align: right;
+}
+
+.log.response {
+    background-color: #f9f9f9;
+    border-left: 5px solid #4CAF50;
+    align-self: flex-start;
+    text-align: left;
+}
+
+.command-form-container {
+    width: 800px;
+    margin: auto;
+    background: #fff;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.command-form {
+    display: flex;
+    width: 100%;
+    max-width: 800px;
+}
+
+.command-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.command-button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.command-button:hover {
+    background-color: #45a049;
+}
+
+.command-result {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 0px 10px; /* Reduce both row and column gap */
+    justify-items: center;
+}
+
+.photo {
+    width: 100%; /* Ensure photo container takes full width of grid column */
+    overflow: hidden; /* Hide any overflow */
+}
+
+.photo img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
